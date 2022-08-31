@@ -145,8 +145,11 @@
                     <div class="card-text">
                         <p class="small noWrap"><%=intro%></p>
                         <p class="small">
-                            <strong>Latest Version:</strong>
-                            <span class="badge <%=updateClass%>">v<%=latestVersion%></span> <span class="text-muted">(<%=latestDate%>)</span>
+                            <span class="badge bg-success"><%=category%></span>
+                            <span class="badge bg-success"><%=players%></span>
+                            <span class="badge bg-success"><%=languages%></span>
+                            <span class="badge <%=updateClass%>">v<%=latestVersion%></span>
+                            <span class="badge <%=updateClass%>"><%=latestDate%></span>
                         </p>
                         <ul class="list-group">
                             <li class="list-group-item">
@@ -207,8 +210,11 @@
 </script>
 
 <script id="updateTemplate" type="text/x-template">
-    <li class="list-group-item">v<%=version%> <small class="text-muted">(#<%=revision%>, <%=date%>)</small>
-        <span class="float-end">
+    <li class="list-group-item">
+        <span class="badge bg-secondary">v<%=version%></span>
+        <span class="badge bg-secondary">#<%=revision%></span>
+        <span class="badge bg-secondary"><%=date%></span>
+    <span class="float-end">
             <span class="badge bg-secondary"><%=size%></span>
             <button data-title-id="<%=titleId%>" data-version="<%=version%>" data-path="<%=path%>" title="ROM Info"
                     class="btnRomInfo btn btn-sm bg-primary text-light <%=enableRomInfo%>"

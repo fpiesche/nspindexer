@@ -270,6 +270,15 @@ function bytesToHuman(bytes, si = false, dp = 1) {
     return bytes.toFixed(dp) + ' ' + units[u];
 }
 
+// https://github.com/30-seconds/30-seconds-of-code/
+const pluralize = (val, word, plural = word + 's') => {
+    const _pluralize = (num, word, plural = word + 's') =>
+      [1, -1].includes(Number(num)) ? word : plural;
+    if (typeof val === 'object')
+      return (num, word) => _pluralize(num, word, val[word]);
+    return _pluralize(val, word, plural);
+}
+
 function createCard(titleId, title) {
     var listUpdates = [];
     var listDlc = []
@@ -313,6 +322,9 @@ function createCard(titleId, title) {
         bannerUrl: title.banner,
         name: title.name,
         intro: title.intro,
+        category: title.category == null ? "?" : title.category.join(", "),
+        players: title.players == null ? "?" : title.players + ' ' + pluralize(title.players, "Player"),
+        languages: title.languages == null ? "?" : title.languages.join(", ").toUpperCase(),
         enableNetInstall: (netInstallEnabled) ? "" : "d-none",
 		enableRename: (renameEnabled) ? "" : "d-none",
 		enableRomInfo: (romInfoEnabled) ? "": "d-none",
